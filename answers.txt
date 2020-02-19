@@ -1,0 +1,3 @@
+1. One of the ways i would handle error occurence would be logging the errors and displaying and option for setup re-running to see if the installation will be a success.
+2.I would capture and store events so as to be able to analyse the cause of the error and later display it to the user 
+3.To check the validity of the data i would add a script to set the execution policy to remote signed which checks on the intergrity of data or path

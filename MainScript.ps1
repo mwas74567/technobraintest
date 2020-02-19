@@ -2,6 +2,7 @@
 $WorkingDirectory = split-path -parent $MyInvocation.MyCommand.Definition
 $ModulesLocationPath = "$WorkingDirectory\Modules"
 $InstallationfileLocation = "C:\Users\Abby\Downloads\npp.7.7.1.Installer.x64.exe"
+$Get-EventLog = ""
 
 function RegisterModules {
     <#
@@ -18,18 +19,14 @@ function RegisterModules {
     }
     }
   function Event{
-      foreach($false > 0){
+      foreach($item < 1){
          Write-Information "Failed.. Re-running the installation."
-       Install-TextEditor
+         Set-ExecutionPolicy RemoteSigned.$WorkingDirectory      
+         Get-EventLog
+         Write-EventLog 
+         Install-TextEditor
          }
-        try{
-
-        Set-ExecutionPolicy RemoteSigned
-           }
- 
-        catch{
-         Get-EventLog -List
-          }
+          
      
           
            }

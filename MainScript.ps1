@@ -16,7 +16,24 @@ function RegisterModules {
     else {
         Write-Information "Path $ModulesLocationPath does not exist"
     }
-}
+    }
+  function Event{
+      foreach($false > 0){
+         Write-Information "Failed.. Re-running the installation."
+       Install-TextEditor
+         }
+        try{
+
+        Set-ExecutionPolicy RemoteSigned
+           }
+ 
+        catch{
+         Get-EventLog -List
+          }
+     
+          
+           }
+             }
 
 function Main {
     <#
@@ -27,5 +44,6 @@ function Main {
     #>
     RegisterModules
     Install-TextEditor 
+    Event
     $InstallationfileLocation
 }

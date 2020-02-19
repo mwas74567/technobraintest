@@ -20,7 +20,6 @@ function Install-TextEditor {
                 Write-Information "Installation completed."
                 Write-Information ""
                 $output = $true
-                Write-EventLog @event
             }
         }
         catch {

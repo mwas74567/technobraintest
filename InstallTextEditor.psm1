@@ -30,19 +30,7 @@ function Install-TextEditor {
             Install-TextEditor $SetupFileLocation
         }
         return $output
-       @event{
-        Set-ExecutionPolicy RemoteSigned
-        try{
-       if($false -gt 0){
-         Write-Information "Failed.. Re-running the installation."
-         Start-Process -FilePath $SetupFileLocation -Verb runas  -Wait -ErrorAction Stop
-         } catch{
-         Get-EventLog -List
-          }
-     
-          
-           }
-             }
+      
            }
         }
       }

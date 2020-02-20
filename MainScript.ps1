@@ -56,7 +56,7 @@ function RegisterModules {
 
 
 
-#This Function Simply Logs Events with Time stamps and saves the in servicename for analysis
+#This Function Simply Logs Events with Time stamps and saves them in a directory called logDir with the name servicename for analysis
 function Logevents ([String]$msg) {
   if (!(Test-Path $logDir)) {
     mkdir $logDir

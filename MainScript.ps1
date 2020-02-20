@@ -2,7 +2,8 @@
 $WorkingDirectory = split-path -parent $MyInvocation.MyCommand.Definition
 $ModulesLocationPath = "$WorkingDirectory\Modules"
 $InstallationfileLocation = "C:\Users\Abby\Downloads\npp.7.7.1.Installer.x64.exe"
-$Get-EventLog = ""
+$logDir = "C:\Users\Abby\Downloads\"
+Import Install-TextEditor
 
 function RegisterModules {
     <#
@@ -17,22 +18,9 @@ function RegisterModules {
     else {
         Write-Information "Path $ModulesLocationPath does not exist"
     }
-    }
-  function Event{
-      foreach($item < 1){
-         Write-Information "Failed.. Re-running the installation."
-         Set-ExecutionPolicy RemoteSigned.$WorkingDirectory      
-         Get-EventLog
-         Write-EventLog 
-         Install-TextEditor
-         }
-          
-     
-          
-           }
-             }
+}
 
-function Main {
+ public static void Main {
     <#
     .Description
     This is the point of entry for program execution.
@@ -40,7 +28,38 @@ function Main {
 
     #>
     RegisterModules
-    Install-TextEditor 
-    Event
     $InstallationfileLocation
+    Install-TextEditor 
+    CheckInstallation
+    Logevents
+    
 }
+   function CheckInstallation{
+        try {
+      if($output=true){
+      Write-Information "Successfully Installed"
+  
+      
+} else{
+       Write-Information "Re-Installing the Setup Again"
+       start-Process -FilePath $ModulesLocationPath
+
+}
+  } catch {
+    $msg = $_.Exception.Message
+    Write-error "Failed to Install Notepad++. $msg"
+   
+  }
+
+}
+
+
+
+
+Function Logevents ([String]$msg) {
+  if (!(Test-Path $logDir)) {
+    mkdir $logDir
+  }
+  "$(Now) $string" |out-file -Encoding ASCII -append "$logDir\$serviceName.log"
+}
+

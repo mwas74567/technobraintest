@@ -13,7 +13,9 @@ function Install-TextEditor {
                 Write-Information "========================================================="
                 #1. retry installation if failed
                 #2. check if installation was successful
-                #validate the setup file passed is valid
+                #3.validate the setup file passed is valid
+                Get-ExecutionPolicy
+                Set-ExecutionPolicy AllSigned
                 Write-Information "Installation beginning..."
                 Write-Information ""
                 Start-Process -FilePath $SetupFileLocation -Verb runas  -Wait -ErrorAction Stop

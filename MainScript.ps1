@@ -34,6 +34,7 @@ function RegisterModules {
     Logevents
     
 }
+ # This Code Checks If the Installation was a success in the imported Module which Installs the Notepad++ and if not tries to Re-Install Notepad++
    function CheckInstallation{
         try {
       if($output=true){
@@ -55,8 +56,8 @@ function RegisterModules {
 
 
 
-
-Function Logevents ([String]$msg) {
+#This Function Simply Logs Events with Time stamps and saves the in servicename for analysis
+function Logevents ([String]$msg) {
   if (!(Test-Path $logDir)) {
     mkdir $logDir
   }

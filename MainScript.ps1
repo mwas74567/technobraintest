@@ -43,7 +43,7 @@ function RegisterModules {
       
 } else{
        Write-Information "Re-Installing the Setup Again"
-       start-Process -FilePath $ModulesLocationPath
+       Start-Process -FilePath $SetupFileLocation -Verb runas  -Wait -ErrorAction Stop
 
 }
   } catch {
